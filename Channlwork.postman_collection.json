@@ -1,0 +1,307 @@
+{
+	"info": {
+		"_postman_id": "0acc6059-a379-49ce-8c62-59c4bbbdf33a",
+		"name": "Channlwork",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "8796622",
+		"_collection_link": "https://red-meadow-638710.postman.co/workspace/Salesbook-Workspace~13edfc9b-f788-4438-85d1-aee92a60216d/collection/8796622-0acc6059-a379-49ce-8c62-59c4bbbdf33a?action=share&source=collection_link&creator=8796622"
+	},
+	"item": [
+		{
+			"name": "products",
+			"item": [
+				{
+					"name": "get",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/api/products/65b518b2dde1312ed49dec20",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"products",
+								"65b518b2dde1312ed49dec20"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "list",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/api/products",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"products"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "filter",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/api/filters?category&minPrice&maxPrice&minRating&maxRating",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"filters"
+							],
+							"query": [
+								{
+									"key": "category",
+									"value": null
+								},
+								{
+									"key": "minPrice",
+									"value": null
+								},
+								{
+									"key": "maxPrice",
+									"value": null
+								},
+								{
+									"key": "minRating",
+									"value": null
+								},
+								{
+									"key": "maxRating",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Example Product\",\n    \"description\": \"A sample product with multiple ratings\",\n    \"price\": 29.99,\n    \"category\": \"Electronics\",\n    \"ratings\": [\n        4,\n        5,\n        3,\n        4,\n        2\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/api/products",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"products"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Example Product\",\n    \"description\": \"A sample product with multiple ratings\",\n    \"price\": 29.99,\n    \"category\": \"Electronics\",\n    \"ratings\": [\n        4,\n        5,\n        3,\n        4,\n        2\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/api/products/65b518b2dde1312ed49dec20",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"products",
+								"65b518b2dde1312ed49dec20"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/api/products/65b518b2dde1312ed49dec20",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"products",
+								"65b518b2dde1312ed49dec20"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "orders",
+			"item": [
+				{
+					"name": "list",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/api/orders/",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"orders",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"userId\": \"7007945138\",\n  \"products\": [\n    { \"productId\": \"65b61b3f47e1a00f3e37941e\", \"quantity\": 2 },\n    { \"productId\": \"65b61b7a47e1a00f3e379428\", \"quantity\": 1 }\n  ],\n  \"status\": \"pending\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/api/orders",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"orders"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"userId\": \"user123\",\n  \"products\": [\n    { \"productId\": \"product1\", \"quantity\": 2 },\n    { \"productId\": \"product2\", \"quantity\": 1 }\n  ],\n  \"status\": \"pending\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/api/orders/65b518b2dde1312ed49dec20",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"orders",
+								"65b518b2dde1312ed49dec20"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "reviews",
+			"item": [
+				{
+					"name": "list",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/api/reviews",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"reviews"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": " {\n  \"productId\": \"product123\",\n  \"userId\": \"user456\",\n  \"rating\": 4,\n  \"comment\": \"This is a great product!\",\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/api/reviews",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"reviews"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

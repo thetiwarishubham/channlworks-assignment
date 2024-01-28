@@ -1,0 +1,192 @@
+openapi: 3.0.0
+info:
+  title: E-commerce Backend API
+  description: API documentation for the e-commerce backend system
+  version: 1.0.0
+
+paths:
+  /api/products:
+    get:
+      summary: Get a list of products
+      responses:
+        '200':
+          description: Successful response
+
+    post:
+      summary: Add a new product
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Product'
+      responses:
+        '200':
+          description: Product added successfully
+
+  /api/products/{id}:
+    get:
+      summary: Get details of a specific product
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: Product ID
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+
+    put:
+      summary: Update details of a specific product
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: Product ID
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Product'
+      responses:
+        '200':
+          description: Product updated successfully
+
+    delete:
+      summary: Delete a specific product
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: Product ID
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Product deleted successfully
+
+  /api/orders:
+    post:
+      summary: Place a new order
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Order'
+      responses:
+        '200':
+          description: Order placed successfully
+
+  /api/orders/{userId}:
+    get:
+      summary: Get the order history for a specific user
+      parameters:
+        - name: userId
+          in: path
+          required: true
+          description: User ID
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+
+  /api/orders/{orderId}:
+    put:
+      summary: Update the status of a specific order
+      parameters:
+        - name: orderId
+          in: path
+          required: true
+          description: Order ID
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Order'
+      responses:
+        '200':
+          description: Order status updated successfully
+
+  /api/reviews/{productId}:
+    post:
+      summary: Add a review for a specific product
+      parameters:
+        - name: productId
+          in: path
+          required: true
+          description: Product ID
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Review'
+      responses:
+        '200':
+          description: Review added successfully
+
+    get:
+      summary: Get reviews for a specific product
+      parameters:
+        - name: productId
+          in: path
+          required: true
+          description: Product ID
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+
+components:
+  schemas:
+    Product:
+      type: object
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+        price:
+          type: number
+        category:
+          type: string
+        ratings:
+            type: number
+
+    Order:
+      type: object
+      properties:
+        userId:
+          type: string
+        products:
+          type: array
+          items:
+            type: object
+            properties:
+              productId:
+                type: string
+              quantity:
+                type: number
+        status:
+          type: string
+          enum: [pending, shipped, delivered]
+
+    Review:
+      type: object
+      properties:
+        productId:
+          type: string
+        userId:
+          type: string
+        rating:
+          type: number
+        comment:
+          type: string
